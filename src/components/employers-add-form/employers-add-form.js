@@ -1,5 +1,4 @@
 import { Component } from 'react';
-// import { v4 as uuidv4 } from 'uuid';
 import './employers-add-form.css'
 
 class EmployersAddForm extends Component {
@@ -19,11 +18,13 @@ class EmployersAddForm extends Component {
   onValueAdd = (e) => {
     e.preventDefault();
     const { name, salary } = this.state;
-    this.props.onAdd(name, salary);
-    this.setState({
-      name: '',
-      salary: ''
-    });
+    if(name.trim().length >=3 && salary !== '') {
+      this.props.onAdd(name, salary);
+      this.setState({
+        name: '',
+        salary: ''
+      });
+    }
   }
 
   render () {
